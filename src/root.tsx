@@ -1,4 +1,5 @@
 import { useStore, useContextProvider, createContext, component$, $ } from '@builder.io/qwik';
+import { QwikCity } from '@builder.io/qwik-city';
 import { Question } from "./components/question/question";
 import { Answer } from "./components/answer/answer";
 import { questions } from "./data/questions";
@@ -25,13 +26,13 @@ export default component$(() => {
   useContextProvider(QuizContext, state);
 
   return (
-    <>
+    <QwikCity>
       <head>
         <meta charSet="utf-8" />
-        <title>Qwik Blank App</title>
+        <link rel="manifest" href="/manifest.json" />
       </head>
-      <body>
-        <main className="bg-slate-800 v-screen h-screen text-white flex overflow-hidden">
+      <body lang="en">
+      <main className="bg-slate-800 v-screen h-screen text-white flex overflow-hidden">
           {
             questions[state.id] &&
             <>
@@ -69,6 +70,6 @@ export default component$(() => {
           }
         </main>
       </body>
-    </>
+    </QwikCity>
   );
 });

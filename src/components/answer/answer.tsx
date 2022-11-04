@@ -14,7 +14,8 @@ export const Answer = component$((props: Item) => {
 	const state = useContext(QuizContext);
 
 	const handleClick: any = $(() => {
-		state.checked = true
+		// @ts-ignore
+		state.checked = true;
 	})
 
 	return (
@@ -24,7 +25,8 @@ export const Answer = component$((props: Item) => {
 					onClick$={() => handleClick()}
 			/>
 
-			{ props.isCorrect && state.checked &&
+			{ // @ts-ignore
+			props.isCorrect && state.checked &&
 				<>
 				<label className="flex p-5 bg-slate-700 border-slate-700 cursor-pointer focus:outline-none hover:bg-gray-600 ring-green-500 ring-2 border-transparent"
 						for={props.choiceId}>
@@ -35,7 +37,8 @@ export const Answer = component$((props: Item) => {
 				</>
 			}
 
-			{ props.isCorrect && !state.checked &&
+			{ // @ts-ignore
+			props.isCorrect && !state.checked &&
 				<>
 				<label className="flex p-5 bg-slate-700 border-slate-700 cursor-pointer focus:outline-none hover:bg-gray-600 peer-checked:ring-green-500 peer-checked:ring-2 peer-checked:border-transparent"
 						for={props.choiceId}>
