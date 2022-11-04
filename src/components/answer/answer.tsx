@@ -1,4 +1,4 @@
-import { component$, useContext } from '@builder.io/qwik';
+import { component$, useContext, $ } from '@builder.io/qwik';
 import { QuizContext } from '../../root';
 import { toChars } from '../../util/helper'
 
@@ -13,18 +13,18 @@ interface Item {
 export const Answer = component$((props: Item) => {
 	const state = useContext(QuizContext);
 
-	const handleClick: any = () => {
+	const handleClick: any = $(() => {
 		state.checked = true
-	}
+	})
 
 	return (
 		<div className="relative mb-5">
 			<input className="sr-only peer" type="radio" 
 					name={props.choiceName} id={props.choiceId}
-					onClick$={() => handleClick}
+					onClick$={() => handleClick()}
 			/>
 
-			{ props.isCorrect && context.checked &&
+			{ props.isCorrect && state.checked &&
 				<>
 				<label className="flex p-5 bg-slate-700 border-slate-700 cursor-pointer focus:outline-none hover:bg-gray-600 ring-green-500 ring-2 border-transparent"
 						for={props.choiceId}>
@@ -35,7 +35,7 @@ export const Answer = component$((props: Item) => {
 				</>
 			}
 
-			{ props.isCorrect && !context.checked &&
+			{ props.isCorrect && !state.checked &&
 				<>
 				<label className="flex p-5 bg-slate-700 border-slate-700 cursor-pointer focus:outline-none hover:bg-gray-600 peer-checked:ring-green-500 peer-checked:ring-2 peer-checked:border-transparent"
 						for={props.choiceId}>
