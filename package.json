@@ -16,9 +16,9 @@
     "fmt": "prettier --write .",
     "fmt.check": "prettier --check .",
     "lint": "eslint src/**/*.ts*",
-    "preview": "qwik build preview && vite preview --open",
+    "preview": "qwik build preview && vite preview",
     "serve": "echo 'Run \"npm run qwik add\" to install a server adaptor'",
-    "start": "vite --open --mode ssr",
+    "start": "vite --mode ssr",
     "qwik": "qwik"
   },
   "devDependencies": {
