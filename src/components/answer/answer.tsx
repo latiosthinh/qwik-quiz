@@ -22,7 +22,7 @@ export const Answer = component$((props: Item) => {
 		<div className="relative mb-5">
 			<input className="sr-only peer" type="radio" 
 					name={props.choiceName} id={props.choiceId}
-					onClick$={() => handleClick()}
+					onChange$={() => handleClick()}
 			/>
 
 			{ // @ts-ignore
