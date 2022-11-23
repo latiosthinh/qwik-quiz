@@ -4,6 +4,7 @@ import { Question } from "./components/question/question";
 import { Answer } from "./components/answer/answer";
 import { questions } from "./data/questions";
 import "./styles/global.css";
+import { Explain } from './components/explain/explain';
 
 export const QuizContext = createContext('quiz-context');
 
@@ -59,11 +60,7 @@ export default component$(() => {
 
               {
                 state.checked && questions[state.id].explain &&
-                <div className="mt-12 p-5 bg-slate-900">
-                  <h2 className="mb-5 font-bold underline underline-offset-2">Explaination </h2>
-
-                  {questions[state.id].explain}
-                </div>
+                <Explain key={'explain-' + state.id} explain={questions[state.id].explain} />
               }
             </div>
             </>
