@@ -20,7 +20,7 @@ export const Answer = component$((props: Item) => {
 		props.store.checked = !props.store.checked
 	})
 
-	const AnswerContent = (isCode: boolean) => {
+	const AnswerContent = (isCode?: boolean) => {
 		if ( isCode ) {
 			return (
 				<pre class="pl-6">

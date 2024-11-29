@@ -32,8 +32,8 @@ export default component$(() => {
 		state.id -= 1
   })
 
-  useOnWindow("contextmenu", $(e => {
-    e.preventDefault()
+  useOnWindow("keydown", $(e => {
+    if (e.key != "SpaceBar") return;
     state.checked && goToNextQuestion()
   }))
 
@@ -80,7 +80,7 @@ export default component$(() => {
             </nav>
 
             <div class="italic text-center mt-3 text-slate-400 text-sm">
-              Hint: Right click to navigate to next question!
+              Hint: Press <strong class="text-green-400">SpaceBar</strong> to navigate to next question!
             </div>
           </div>
         </>
