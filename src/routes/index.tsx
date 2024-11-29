@@ -46,7 +46,7 @@ export default component$(() => {
   })
 
   useOnWindow("keydown", $(e => {
-    if (e.key != " ") return;
+    if (e.code != "Space") return;
     state.checked && goToNextQuestion()
   }))
 
