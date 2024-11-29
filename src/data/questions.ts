@@ -890,7 +890,7 @@ metaClass.RemoveField("BidPrice");` },
 	{
 		"question": "Which of the following Pricing Services edits/updates prices?",
 		"answerOptions": [
-			{ "answer": "PriceDetailService",
+			{ "answer": "IPriceDetailService",
 				"isCorrect": true,
 			},
 			{ "answer": "IPriceService" },
