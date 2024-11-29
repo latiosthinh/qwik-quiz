@@ -1,5 +1,7 @@
-import { $, component$, useStore } from "@builder.io/qwik";
+import { $, component$ } from "@builder.io/qwik";
 import { toChars } from "~/utils/utils";
+import hljs from 'highlight.js/lib/core';
+import typescript from "highlight.js/lib/languages/typescript"
 
 interface Item {
 	order: number,
@@ -7,13 +9,32 @@ interface Item {
 	choiceName: any,
 	choiceId: any,
 	isCorrect: any
-	store: any
+	store: any,
+	isCode?: boolean,
 }
 
 export const Answer = component$((props: Item) => {
+	hljs.registerLanguage('typescript', typescript);
+
 	const handleClick = $(() => {
 		props.store.checked = !props.store.checked
 	})
+
+	const AnswerContent = (isCode: boolean) => {
+		if ( isCode ) {
+			return (
+				<pre class="pl-6">
+					<code dangerouslySetInnerHTML={ hljs.highlight(props.choice.answer, { language: 'typescript' }).value } class="!bg-transparent" />
+				</pre>
+			)
+		}
+
+		return (
+			<div class="pl-6 leading-6">
+				{ props.choice.answer }
+			</div>
+		)
+	}
 
 	return (
 		<>
@@ -30,7 +51,7 @@ export const Answer = component$((props: Item) => {
 					<label class="flex p-5 bg-slate-700 border-slate-700 cursor-pointer focus:outline-none hover:bg-gray-600 ring-green-500 ring-2 border-transparent"
 							for={props.choiceId}>
 						<span class="absolute top-0 left-0 h-full flex justify-center items-center px-3 bg-gray-900">{toChars( props.order )}</span>
-						<p class="pl-6">{props.choice.answer}</p>
+						{AnswerContent(props.isCode)}
 					</label>
 					<span class="absolute w-5 flex top-0 right-0 h-full px-5 justify-center items-center">👍</span>
 				</>
@@ -41,7 +62,7 @@ export const Answer = component$((props: Item) => {
 					<label class="flex p-5 bg-slate-700 border-slate-700 cursor-pointer focus:outline-none hover:bg-gray-600 peer-checked:ring-green-500 peer-checked:ring-2 peer-checked:border-transparent"
 							for={props.choiceId}>
 						<span class="absolute top-0 left-0 h-full flex justify-center items-center px-3 bg-gray-900">{toChars( props.order )}</span>
-						<p class="pl-6">{props.choice.answer}</p>
+						{AnswerContent(props.isCode)}
 					</label>
 					<span class="absolute hidden w-5 peer-checked:flex top-0 right-0 h-full px-5 justify-center items-center">👍</span>
 				</>
@@ -52,7 +73,7 @@ export const Answer = component$((props: Item) => {
 					<label class={`flex p-5 bg-slate-700 border-slate-700 cursor-pointer focus:outline-none hover:bg-gray-600 peer-checked:ring-red-500 peer-checked:ring-2 peer-checked:border-transparent ${props.store.checked ? "opacity-30" : ""}`}
 							for={props.choiceId}>
 						<span class="absolute top-0 left-0 h-full flex justify-center items-center px-3 bg-gray-900">{toChars( props.order )}</span>
-						<p class="pl-6">{props.choice.answer}</p>
+						{AnswerContent(props.isCode)}
 					</label>
 					<span class="absolute hidden w-5 peer-checked:flex top-0 right-0 h-full px-5 justify-center items-center">❌</span>
 				</>

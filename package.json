@@ -44,5 +44,8 @@
     "undici": "*",
     "vite": "5.3.5",
     "vite-tsconfig-paths": "^4.2.1"
+  },
+  "dependencies": {
+    "highlight.js": "^11.10.0"
   }
 }

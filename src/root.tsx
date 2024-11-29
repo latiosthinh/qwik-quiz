@@ -8,6 +8,7 @@ import {
 import { RouterHead } from "./components/router-head/router-head";
 
 import "./global.css";
+import "highlight.js/styles/github-dark.css";
 
 export default component$(() => {
   return (
