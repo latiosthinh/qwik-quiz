@@ -12,14 +12,27 @@ interface IContext {
 
 export const GlobalContext = createContextId<Signal<IContext>>("GlobalContext");
 
+const shuffleArray = (array: any[]) => {
+  for (let i = array.length - 1; i >= 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      const temp = array[i];
+      array[i] = array[j];
+      array[j] = temp;
+  }
+
+  return array;
+}
+
 export default component$(() => {
+  const data = shuffleArray(questions)
+
   const state = useStore({
     id: 0,
     checked: false,
   });
 
   const goToNextQuestion = $(() => {
-    if ( state.id == questions.length - 1 ) {
+    if ( state.id == data.length - 1 ) {
 			state.id = 0
 			return
 		}
@@ -33,7 +46,7 @@ export default component$(() => {
   })
 
   useOnWindow("keydown", $(e => {
-    if (e.key != "SpaceBar") return;
+    if (e.key != " ") return;
     state.checked && goToNextQuestion()
   }))
 
@@ -41,15 +54,15 @@ export default component$(() => {
   return (
     <>
       {
-        questions[state.id] &&
+        data[state.id] &&
         <>
           <div class="bg-slate-900 h-52 overflow-y-auto p-3 flex justify-center items-center">
-            <Question key={'question' + state.id} question={questions[state.id].question} />
+            <Question key={'question' + state.id} question={data[state.id].question} />
           </div>
           
           <div class="flex flex-col overflow-y-auto p-3 h-full">
             {
-              questions[state.id]?.answerOptions.map((choice, index) => (
+              data[state.id]?.answerOptions.map((choice: any, index: number) => (
                 <Answer 
                   key={'answer-' + index + '/' + state.id}
                   order={index}
@@ -57,7 +70,7 @@ export default component$(() => {
                   choiceName={'answer-' + state.id} 
                   choiceId={'answer-' + index + '/' + state.id}
                   isCorrect={choice.isCorrect ?? false}
-                  isCode={questions[state.id].isCode || false}
+                  isCode={data[state.id].isCode || false}
                   store={state}
                 />
               ))
