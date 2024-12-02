@@ -1,6 +1,6 @@
 import type { Signal} from "@builder.io/qwik";
 import { $, component$, createContextId, useOnWindow, useStore } from "@builder.io/qwik";
-import type { DocumentHead } from "@builder.io/qwik-city";
+import { Link, type DocumentHead } from "@builder.io/qwik-city";
 import { Question } from "~/components/question";
 import { Answer } from "~/components/answer";
 import { questions } from "~/data/questions";
@@ -45,11 +45,13 @@ export default component$(() => {
       {
         data[state.id] &&
         <>
-          <div class="bg-slate-900 h-52 overflow-y-auto p-3 flex justify-center items-center">
+          <section class="bg-slate-900 h-52 overflow-y-auto p-3 flex justify-center items-center relative">
             <Question key={'question' + state.id} question={data[state.id].question} />
-          </div>
+
+            <Link href="/lookup/" class="absolute bottom-3 right-3 underline text-green-400">Lookup</Link>
+          </section>
           
-          <div class="flex flex-col overflow-y-auto p-3 h-full">
+          <section class="flex flex-col p-3 h-full">
             {
               data[state.id]?.answerOptions.map((choice: any, index: number) => (
                 <Answer 
@@ -84,7 +86,7 @@ export default component$(() => {
             <div class="italic text-center mt-3 text-slate-400 text-sm">
               Hint: Press <strong class="text-green-400">SpaceBar</strong> to navigate to next question!
             </div>
-          </div>
+          </section>
         </>
       }
     </>
