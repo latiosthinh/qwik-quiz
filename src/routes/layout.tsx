@@ -26,7 +26,7 @@ export default component$(() => {
   useStyles$(styles);
   return (
     <>
-      <main class="bg-slate-800 v-screen h-screen text-white overflow-hidden">
+      <main class="bg-slate-800 v-screen min-h-screen text-white">
         <Slot />
       </main>
     </>

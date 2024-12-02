@@ -24,7 +24,8 @@ const shuffleArray = (array: any[]) => {
 }
 
 export default component$(() => {
-  const data = shuffleArray(questions)
+  // const data = shuffleArray(questions)
+  const data = questions
 
   const state = useStore({
     id: 0,
