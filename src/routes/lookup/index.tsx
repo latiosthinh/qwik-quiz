@@ -31,7 +31,7 @@ export default component$(() => {
 			{!!state.value.length &&
 				<section class="flex flex-col gap-4 p-3 h-full">
 					{state.value.map((q, index) => (
-						<div key={index} class="p-2 bg-slate-900">
+						<div key={index} class="p-2 bg-slate-900 overflow-auto">
 							<div class="mb-2">{q.question}</div>
 							{q.answerOptions.filter(a => a.isCorrect).map((a, index) => (
 								<div key={index} class="mb-2 text-green-400">

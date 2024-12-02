@@ -48,9 +48,9 @@ export const Answer = component$((props: Item) => {
 
 			{ props.isCorrect && props.store.checked &&
 				<>
-					<label class="flex p-5 bg-slate-700 border-slate-700 cursor-pointer focus:outline-none hover:bg-gray-600 ring-green-500 ring-2 border-transparent"
+					<label class="flex p-5 bg-slate-700 border-slate-700 cursor-pointer focus:outline-none hover:bg-gray-600 ring-green-500 ring-2 border-transparent overflow-auto"
 							for={props.choiceId}>
-						<span class="absolute top-0 left-0 h-full flex justify-center items-center px-3 bg-gray-900">{toChars( props.order )}</span>
+						<span class="absolute top-0 -left-[1px] h-full flex justify-center items-center px-3 bg-gray-900">{toChars( props.order )}</span>
 						{AnswerContent(props.isCode)}
 					</label>
 					<span class="absolute w-5 flex top-0 right-0 h-full px-5 justify-center items-center">👍</span>
@@ -59,9 +59,9 @@ export const Answer = component$((props: Item) => {
 
 			{ props.isCorrect && !props.store.checked &&
 				<>
-					<label class="flex p-5 bg-slate-700 border-slate-700 cursor-pointer focus:outline-none hover:bg-gray-600 peer-checked:ring-green-500 peer-checked:ring-2 peer-checked:border-transparent"
+					<label class="flex p-5 bg-slate-700 border-slate-700 cursor-pointer focus:outline-none hover:bg-gray-600 peer-checked:ring-green-500 peer-checked:ring-2 peer-checked:border-transparent overflow-auto"
 							for={props.choiceId}>
-						<span class="absolute top-0 left-0 h-full flex justify-center items-center px-3 bg-gray-900">{toChars( props.order )}</span>
+						<span class="absolute top-0 -left-[1px] h-full flex justify-center items-center px-3 bg-gray-900">{toChars( props.order )}</span>
 						{AnswerContent(props.isCode)}
 					</label>
 					<span class="absolute hidden w-5 peer-checked:flex top-0 right-0 h-full px-5 justify-center items-center">👍</span>
@@ -70,9 +70,9 @@ export const Answer = component$((props: Item) => {
 
 			{ !props.isCorrect && 
 				<>
-					<label class={`flex p-5 bg-slate-700 border-slate-700 cursor-pointer focus:outline-none hover:bg-gray-600 peer-checked:ring-red-500 peer-checked:ring-2 peer-checked:border-transparent ${props.store.checked ? "opacity-30" : ""}`}
+					<label class={`flex p-5 bg-slate-700 border-slate-700 cursor-pointer focus:outline-none hover:bg-gray-600 peer-checked:ring-red-500 peer-checked:ring-2 peer-checked:border-transparent overflow-auto ${props.store.checked ? "opacity-30" : ""}`}
 							for={props.choiceId}>
-						<span class="absolute top-0 left-0 h-full flex justify-center items-center px-3 bg-gray-900">{toChars( props.order )}</span>
+						<span class="absolute top-0 -left-[1px] h-full flex justify-center items-center px-3 bg-gray-900">{toChars( props.order )}</span>
 						{AnswerContent(props.isCode)}
 					</label>
 					<span class="absolute hidden w-5 peer-checked:flex top-0 right-0 h-full px-5 justify-center items-center">❌</span>
