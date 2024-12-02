@@ -955,4 +955,233 @@ In this scenario, which of the following statement is correct?
 		],
 		"isCode": true
 	},
+	{
+		"question": `All of the following content types have EntryContentBase as the base class except one. Which is the exception?`,
+		"answerOptions": [
+			{ "answer": `Product` },
+			{ "answer": `Variation ` },
+			{ "answer": `Bundle ` },
+			{ "answer": `Category`,
+				"isCorrect": true
+			},
+		]
+	},
+	{
+		"question": `Which of the following naming conventions is the default name for the connection string used in Commerce?`,
+		"answerOptions": [
+			{ "answer": `"EpiServer:Databases:Commerce"` },
+			{ "answer": `"ConnectionStrings:EPiServerDB"` },
+			{ "answer": `"ConnectionStrings:EcfSqlConnection"`,
+				"isCorrect": true
+			},
+			{ "answer": `The connection string is set in the CMS database` },
+		]
+	},{
+		"question": `How do you refer a newly-created, strongly-typed model class as an existing meta data class in MetaDataPlus?`,
+		"answerOptions": [
+			{ "answer": `Decorate the model class with the CatalogContentType attribute and set the MetaClassName property to the name of the meta data class.`,
+				"isCorrect": true
+			},
+			{ "answer": `Decorate the model class with the CatalogContentType attribute and set the ID property to the ID of the meta data class.` },
+			{ "answer": `Create an initialization module and register the connection using the IContentTypeRepository service.` },
+			{ "answer": `Create an initialization module and register the connection using the IContentRepository service. ` },
+		]
+	},
+	{
+		"question": `Which is the default search provider for the EPiServer.Commerce.Core package? `,
+		"answerOptions": [
+			{ "answer": `LuceneFindProvider ` },
+			{ "answer": `LucenesSearchProvider` },
+			{ "answer": `LuceneSearchProvider`,
+				"isCorrect": true
+			},
+			{ "answer": `EpiserverLuceneSearchProvider` },
+		]
+	},
+	{
+		"question": `Which of the following types is inherited when creating a new Category content type?`,
+		"answerOptions": [
+			{ "answer": `CategoryContent` },
+			{ "answer": `NodeContent`,
+				"isCorrect": true
+			},
+			{ "answer": `NodeContentBase` },
+			{ "answer": `RootContent` },
+		]
+	},{
+		"question": `When does the database update after a category's prices are updated in the Pricing overview? `,
+		"answerOptions": [
+			{ "answer": `Together with other content changes for the entry when published. ` },
+			{ "answer": `Instantly during editing. `,
+				"isCorrect": true
+			},
+			{ "answer": `Together with the inventory information when this is changed. ` },
+			{ "answer": `When "schedule for publish" has been set. ` },
+		]
+	},
+	{
+		"question": `What happens when a product with variations is linked to an additional Weekly Specials category?`,
+		"answerOptions": [
+			{ "answer": `A link of type Association will be created for the product pointing to the Weekly Specials category.` },
+			{ "answer": `The product will be detached from the category where it originally resided.` },
+			{ "answer": `The Weekly Specials category will be listed as a relation for the product.` },
+			{ "answer": `An event of IContentEvents will be triggered.`,
+				"isCorrect": true
+			},
+		]
+	},
+	{
+		"question": `How do you access the media connected to a product? `,
+		"answerOptions": [
+			{ "answer": `Use the VariantsReference property on an instance of a ProductContent.` },
+			{ "answer": `Use the CommerceMediaCollection property on an instance of a content type. `,
+				"isCorrect": true
+			},
+			{ "answer": `Call the GetChildren method on an instance of IContentRepository. ` },
+			{ "answer": `Use the Image or File properties of a MetaClass in MetaDataPlus. ` },
+		]
+	},
+	{
+		"question": `Which content type is commerce root content? `,
+		"answerOptions": [
+			{ "answer": `CatalogEntry` },
+			{ "answer": `CatalogNode` },
+			{ "answer": `Catalog` },
+			{ "answer": `Root`,
+				"isCorrect": true
+			},
+		]
+	},
+	{
+		"question": `Which of the following statement is true for the EntryContent Catalog (ECF Catalog system)?`,
+		"answerOptions": [
+			{ "answer": `Must be the child of a Catalog or CatalogNode. `,
+				"isCorrect": true
+			},
+			{ "answer": `You can move Catalog Entry Outside of Catalog. ` },
+			{ "answer": `Can be the parent of Catalog or CatalogNode. ` },
+			{ "answer": `You can link Catalog Node Outside the Catalog also.` },
+		]
+	},
+	{
+		"question": `Which statement best reflects one main characteristic of catalog structures? `,
+		"answerOptions": [
+			{ "answer": `You need categories to be able to use Context classes for retrieving product data from the catalog. ` },
+			{ "answer": `You can only attach assets to models in the catalog structure that inherit from EntryContentBase. ` },
+			{ "answer": `You can use a renderer to apply categories when creating catalog browsing features. `,
+				"isCorrect": true
+			},
+			{ "answer": `You cannot have variations without products in a catalog structure.` },
+		]
+	},
+	{
+		"question": `Which statement is true about describing packages? `,
+		"answerOptions": [
+			{ "answer": `A package is comprised of multiple SKU's. When you add it to a cart it is added as a single SKU, and has it's own specific pricing and inventory.`,
+				"isCorrect": true
+			},
+			{ "answer": `A package is comprised of multiple SKU's. When added to the cart, the individual SKU's are added rather than the package, at which point the SKU's are managed as individual items. ` },
+			{ "answer": `The pricing for a package is automatically calculated, based on the SKU's defined in the package. ` },
+			{ "answer": `A bundle and a package are different names for exactly the same thing. ` },
+		]
+	},
+	{
+		"question": `Which class can be used to hide promotion types from appearing on the Edit Discount view? `,
+		"answerOptions": [
+			{ "answer": `PromotionTypeHandler class `,
+				"isCorrect": true
+			},
+			{ "answer": `DisablePromotionTypeHandler class ` },
+			{ "answer": `RemovePromotionType class ` },
+			{ "answer": `HidePromotionTypeHandler class` },
+		]
+	},
+	{
+		"question": `Which of the following is true about the MetaField in the Commerce subsystem?`,
+		"answerOptions": [
+			{ "answer": `Multiple MetaFields can exists with same name or type.` },
+			{ "answer": `The MetaField type cannot be changed once created.` },
+			{ "answer": `The MetaField cannot be created through code.` },
+			{ "answer": `The MetaField type can be changed at any time.`,
+				"isCorrect": true
+			},
+		]
+	},
+	{
+		"question": `Which MetaClass adds a custom property to a Purchase Order? `,
+		"answerOptions": [
+			{ "answer": `PurchaseOrderMetaClass` },
+			{ "answer": `OrderGroupMetaClass`,
+				"isCorrect": true
+			},
+			{ "answer": `OrderItemMetaClass` },
+			{ "answer": `ShipmentMetaClass` },
+		]
+	},
+	{
+		"question": `Which of the following options have caching?`,
+		"answerOptions": [
+			{ "answer": `IPriceService`,
+				"isCorrect": true
+			},
+			{ "answer": `IPriceDetailService` },
+			{ "answer": `Both A and B` },
+			{ "answer": `IPriceDetailValue` },
+		]
+	},
+	{
+		"question": `Which of the following is needed to successfully create a new cart for a customer under a different market context?`,
+		"answerOptions": [
+			{ "answer": `Add the user to the target market and then save the cart.` },
+			{ "answer": `Change the current market using ICurrentMarket.SetCurrentMarket and then save the cart.` },
+			{ "answer": `Change the current market using IMarket and then save the cart.`,
+				"isCorrect": true
+			},
+			{ "answer": `Pass an instance of IMarket into the save method` },
+		]
+	},
+	{
+		"question": `When does the database update after a category's prices are updated in the Pricing overview?`,
+		"answerOptions": [
+			{ "answer": `Together with other content changes for the entry when published.` },
+			{ "answer": `Instantly during editing.`,
+				"isCorrect": true
+			},
+			{ "answer": `Together with the inventory information when this is changed.` },
+			{ "answer": `When "schedule for publish" has been set.` },
+		]
+	},
+	{
+		"question": `What is the best catalog structure for a site that has 5,000 sellable items, including watches in stainless steel and titanium and wallets in leather and rexine?`,
+		"answerOptions": [
+			{ "answer": `Create all items as variations under the root catalog.` },
+			{ "answer": `Create a product for Watches and another for Wallets and put color or size as variations.` },
+			{ "answer": `Create a category with name Store with subcategories by material type.` },
+			{ "answer": `Create a category for Watches and another for Wallets with subcategories by material type.`,
+				"isCorrect": true
+			},
+		]
+	},
+	{
+		"question": `What happens to child nodes if a catalog is deleted?`,
+		"answerOptions": [
+			{ "answer": `The whole catalog is deleted.` },
+			{ "answer": `The system does not delete children related to other categories in different catalogs.`,
+				"isCorrect": true
+			},
+			{ "answer": `The system does not delete children related to other categories within the same catalog.` },
+			{ "answer": `You cannot remove a catalog` },
+		]
+	},
+	{
+		"question": `Which of the following classes can have prices?`,
+		"answerOptions": [
+			{ "answer": `ProductContent` },
+			{ "answer": `BundleContent` },
+			{ "answer": `PackageContent`,
+				"isCorrect": true
+			},
+			{ "answer": `EntryContentBase` },
+		]
+	},
 ]

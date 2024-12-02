@@ -24,7 +24,7 @@ export const Answer = component$((props: Item) => {
 		if ( isCode ) {
 			return (
 				<pre class="pl-6">
-					<code dangerouslySetInnerHTML={ hljs.highlight(props.choice.answer, { language: 'typescript' }).value } class="!bg-transparent" />
+					<code dangerouslySetInnerHTML={ hljs.highlight(props.choice.answer, { language: 'typescript', ignoreIllegals: true }).value } class="!bg-transparent block" />
 				</pre>
 			)
 		}
