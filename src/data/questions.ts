@@ -417,7 +417,7 @@ s(productCode)` },
 			{ answer: `The ICatalogSystem interface includes a DIO-based API` },
 			{ answer: `The IContentLoader is used to load details of a catalog content. ` },
 			{ answer: `The IContentRepository interface is used to work with both page and catalog modeling.` },
-			{ answer: `The DTO-based API relies on the underlying ContentRepository API`,
+			{ answer: `You cannot have variations without products in a catalog structure.`,
 				isCorrect: true,
 			},
 		],
@@ -426,10 +426,10 @@ s(productCode)` },
 		question: "Which of the following components are needed for the Product Catalog and Order Subsystem to function?",
 		answerOptions: [
 			{ answer: `Pattern and Coding Style ` },
-			{ answer: `Dynamic Data Store (DDS) ` },
-			{ answer: `Metadata Plus`,
+			{ answer: `Dynamic Data Store (DDS)`,
 				isCorrect: true,
 			},
+			{ answer: `Metadata Plus`},
 			{ answer: `Business Foundation` }
 		],
 	},
@@ -1021,26 +1021,16 @@ In this scenario, which of the following statement is correct?
 			{ answer: `NodeContentBase` },
 			{ answer: `RootContent` },
 		]
-	},{
-		question: `When does the database update after a category's prices are updated in the Pricing overview? `,
-		answerOptions: [
-			{ answer: `Together with other content changes for the entry when published. ` },
-			{ answer: `Instantly during editing. `,
-				isCorrect: true
-			},
-			{ answer: `Together with the inventory information when this is changed. ` },
-			{ answer: `When "schedule for publish" has been set. ` },
-		]
 	},
 	{
 		question: `What happens when a product with variations is linked to an additional Weekly Specials category?`,
 		answerOptions: [
-			{ answer: `A link of type Association will be created for the product pointing to the Weekly Specials category.` },
-			{ answer: `The product will be detached from the category where it originally resided.` },
-			{ answer: `The Weekly Specials category will be listed as a relation for the product.` },
-			{ answer: `An event of IContentEvents will be triggered.`,
+			{ answer: `A link of type Association will be created for the product pointing to the Weekly Specials category.`,
 				isCorrect: true
 			},
+			{ answer: `The product will be detached from the category where it originally resided.` },
+			{ answer: `The Weekly Specials category will be listed as a relation for the product.` },
+			{ answer: `An event of IContentEvents will be triggered.`},
 		]
 	},
 	{
@@ -1059,10 +1049,10 @@ In this scenario, which of the following statement is correct?
 		answerOptions: [
 			{ answer: `CatalogEntry` },
 			{ answer: `CatalogNode` },
-			{ answer: `Catalog` },
-			{ answer: `Root`,
+			{ answer: `Catalog`,
 				isCorrect: true
 			},
+			{ answer: `Root` },
 		]
 	},
 	{
@@ -1113,11 +1103,11 @@ In this scenario, which of the following statement is correct?
 		question: `Which of the following is true about the MetaField in the Commerce subsystem?`,
 		answerOptions: [
 			{ answer: `Multiple MetaFields can exists with same name or type.` },
-			{ answer: `The MetaField type cannot be changed once created.` },
-			{ answer: `The MetaField cannot be created through code.` },
-			{ answer: `The MetaField type can be changed at any time.`,
+			{ answer: `The MetaField type cannot be changed once created.`,
 				isCorrect: true
 			},
+			{ answer: `The MetaField cannot be created through code.` },
+			{ answer: `The MetaField type can be changed at any time.`},
 		]
 	},
 	{
@@ -1134,11 +1124,9 @@ In this scenario, which of the following statement is correct?
 	{
 		question: `Which of the following options have caching?`,
 		answerOptions: [
-			{ answer: `IPriceService`,
-				isCorrect: true
-			},
+			{ answer: `IPriceService`,},
 			{ answer: `IPriceDetailService` },
-			{ answer: `Both A and B` },
+			{ answer: `Both A and B`, isCorrect: true },
 			{ answer: `IPriceDetailValue` },
 		]
 	},
@@ -1146,17 +1134,16 @@ In this scenario, which of the following statement is correct?
 		question: `Which of the following is needed to successfully create a new cart for a customer under a different market context?`,
 		answerOptions: [
 			{ answer: `Add the user to the target market and then save the cart.` },
-			{ answer: `Change the current market using ICurrentMarket.SetCurrentMarket and then save the cart.` },
-			{ answer: `Change the current market using IMarket and then save the cart.`,
-				isCorrect: true
-			},
+			{ answer: `Change the current market using ICurrentMarket.SetCurrentMarket and then save the cart.`, isCorrect: true },
+			{ answer: `Change the current market using IMarket and then save the cart.`},
 			{ answer: `Pass an instance of IMarket into the save method` },
 		]
 	},
 	{
 		question: `When does the database update after a category's prices are updated in the Pricing overview?`,
 		answerOptions: [
-			{ answer: `Together with other content changes for the entry when published.` },
+			{ answer: `Together with other content changes for the entry when published.`,
+				isCorrect: true },
 			{ answer: `Instantly during editing.`,
 				isCorrect: true
 			},
@@ -1195,6 +1182,308 @@ In this scenario, which of the following statement is correct?
 				isCorrect: true
 			},
 			{ answer: `EntryContentBase` },
+		]
+	},
+	{
+		question: `Which of the following outcomes occurs when a category node that contains catalog entries is deleted?`,
+		answerOptions: [
+			{ answer: `All catalog entries in the category will be deleted, regardless of the type of entry and category relations.` },
+			{ answer: `All links to the deleted category will be removed and other links kept intact if the deleted category contained catalog entries linking to other categories.`,
+				isCorrect: true
+			},
+			{ answer: `Only the category itself will be deleted. Catalog entries in the category will remain and will be available in the catalog root level.` },
+			{ answer: `Any linked packages will be deleted if the deleted category contains catalog entries linking to packages.` },
+		]
+	},
+	{
+		question: `What catalog entry type should you use to describe the combination of a razor blade, shaving cream and aftershave, which a customer could easily purchase together, but that show as individual line items in the cart?`,
+		answerOptions: [
+			{ answer: `Variation` },
+			{ answer: `Product` },
+			{ answer: `Bundle`,
+				isCorrect: true
+			},
+			{ answer: `Package` },
+		]
+	},
+	{
+		question: `Consider a case: Every item in a catalog has unique attributes and cannot be grouped. Pricing and inventory are managed in the admin interface. What is the best approach when modeling the catalog under these assumptions?`,
+		answerOptions: [
+			{ answer: `All items can be represented as Products without variants.`,
+				isCorrect: true
+			},
+			{ answer: `All items can be represented as a Product and a single child Variant.` },
+			{ answer: `All items can be represented as standalone variants.` },
+			{ answer: `Recommend that the client restructures their catalog to have products and variants. This will then be recreated within the ecommerce catalog structure.` },
+		]
+	},
+	{
+		question: `Which class represents the relation between a Product and a Variant?`,
+		answerOptions: [
+			{ answer: `EPiServer.Commerce.Catalog.Linking.ProductVariation`,
+				isCorrect: true
+			},
+			{ answer: `EPiServer.Commerce.Catalog.Linking.ProductRelation` },
+			{ answer: `EPiServer.Commerce.Catalog.Relations.ProductVariation` },
+			{ answer: `EPiServer.Commerce.Catalog.Linking.ProductVariants` },
+		]
+	},
+	{
+		question: `What is the correct order of the catalog structure?`,
+		answerOptions: [
+			{ answer: `CatalogContent NodeContent (category) EntryContentBase (item)`,
+				isCorrect: true
+			},
+			{ answer: `CatalogContent VariantContent (item) NodeContent (category)` },
+			{ answer: `CatalogContent VariantContent(variant) NodeContent (category) EntryContentBase (item)` },
+			{ answer: `CatalogContent BundleContent (container) EntryContentBase (item) NodeContent (category)` },
+		]
+	},
+	{
+		question: `When creating a promotion from which class we should not inherit directly?`,
+		answerOptions: [
+			{ answer: `EntryPromotion` },
+			{ answer: `OrderPromotion` },
+			{ answer: `PromotionData`,
+				isCorrect: true
+			},
+			{ answer: `ShippingPromotion` },
+		]
+	},
+	{
+		question: `What can you use to configure the cache of subsystems, such as catalog orders?`,
+		answerOptions: [
+			{ answer: `AppSettings.json` },
+			{ answer: `Web.config` },
+			{ answer: `ConfigureServices method of Startup.cs` },
+			{ answer: `Both A and C`,
+				isCorrect: true
+			},
+		]
+	},
+	{
+		question: `Categories with a large number of items use a simplified UI mode. Which of the following values is the default value of items per category that enables this mode?`,
+		answerOptions: [
+			{ answer: `1000` },
+			{ answer: `2000`,
+				isCorrect: true
+			},
+			{ answer: `5000` },
+			{ answer: `10000` },
+		]
+	},
+	{
+		question: `Which of the following statements about the ICatalogSystem is incorrect?`,
+		answerOptions: [
+			{ answer: `ICatalogSystem finds nodes and entries with specific criteria.` },
+			{ answer: `ICatalogSystem events supersede CatalogEventBroadcaster events.`,
+				isCorrect: true
+			},
+			{ answer: `CatalogEventBroadcaster(namespace Mediachase.Commerce.Catalog.Events) defines events from ICatalogSystem changes.` },
+			{ answer: `Catalog content is indexed when content is published through ICatalogSystem.` },
+		]
+	},
+	{
+		question: `What is a bundle in Commerce?`,
+		answerOptions: [
+			{ answer: `Multiple SKUs put together in a single unified price.` },
+			{ answer: `Product names, part numbers, descriptions and photos.` },
+			{ answer: `Group of SKUs and variations that enable customers to buy two or more items at once.`,
+				isCorrect: true
+			},
+			{ answer: `A combination package of variants, packages and SKUs.` },
+		]
+	},
+	{
+		question: `Which code snippet best shows how to modify this variation model class to set a default value of color when a merchandiser creates a new item of that type?`,
+		answerOptions: [
+			{ answer: `[DefaultValue("Color", "Red")] public class MyVariation : VariationContent` },
+			{ answer: `[DefaultValue("Red")] public string Color { get; set; }` },
+			{ answer: `public override void SetDefaultValues(ContentType contentType) { base.SetDefaultValues(contentType); Color = "Red"; }`,
+				isCorrect: true
+			},
+			{ answer: `public override string GetPropertyValue(string name) { if (name == "Color") { return "Red"; } return base.GetPropertyValue(name); }` },
+		],
+		"isCode": true
+	},
+	{
+		question: "What is the base class for VariationContent, ProductContent, BundleContent and PackageContent?",
+		answerOptions: [
+			{
+				answer: "EntryContentBase",
+				"isCorrect": true
+			},
+			{
+				answer: "NodeContentBase"
+			},
+			{
+				answer: "CatalogContentBase"
+			},
+			{
+				answer: "ContentBase"
+			}
+		]
+	},
+	{
+		question: "How can you retrieve content reference using catalog content code?",
+		answerOptions: [
+			{
+				answer: "ReferenceConverter.GetContentLink(code)",
+				"isCorrect": true
+			},
+			{
+				answer: "ILinkRepository.GetReference(code)"
+			},
+			{
+				answer: "IContentRepository.GetContentLink(code)"
+			},
+			{
+				answer: "IContentLoader.GetContent(code)"
+			}
+		]
+	},
+	{
+		question: "Which of the following statements is true about bundles?",
+		answerOptions: [
+			{
+				answer: "A bundle is comprised of multiple SKU's and can have its own pricing/inventory management.",
+				"isCorrect": true
+			},
+			{
+				answer: "A bundle is comprised of multiple SKU's. When added to the cart, the individual SKU's are added rather than the bundle, at which point the SKU's are managed as individual items."
+			},
+			{
+				answer: "A bundle can be included within a promotion, the same as products."
+			},
+			{
+				answer: "A bundle and a package are different names for exactly the same thing."
+			}
+		]
+	},
+	{
+		question: "Which of the following reasons is most important in planning out the structure of a catalog?",
+		answerOptions: [
+			{
+				answer: "To be able to find a product in the catalog."
+			},
+			{
+				answer: "To understand the impact of structure on performance.",
+				"isCorrect": true
+			},
+			{
+				answer: "To track changes for individual meta fields values on an entry."
+			},
+			{
+				answer: "To know which media assets to use."
+			}
+		]
+	},
+	{
+		question: "How would you enable automatic creation of database schema upon site initialization?",
+		answerOptions: [
+			{
+				answer: "Add attribute `CreateDatabaseSchema\": \"true\"` to the relevant appsetting.json"
+			},
+			{
+				answer: "By removing Read access to from the database user"
+			},
+			{
+				answer: "By enabling the setting in the CMS Admin section",
+				"isCorrect": true
+			},
+			{
+				answer: "By restoring a previous database backup before starting the site"
+			}
+		]
+	},
+	{
+		question: "Which of the following content types are built-in types in Optimizely Commerce Cloud?",
+		answerOptions: [
+			{
+				answer: "Site, Variation, Product and Category."
+			},
+			{
+				answer: "Offer, Product, ProductCategory and Site."
+			},
+			{
+				answer: "Variation, Product, Catalog and Category.",
+				"isCorrect": true
+			},
+			{
+				answer: "Site, Product, Catalog and Variation."
+			}
+		]
+	},
+	{
+		question: "What catalog entry type should you use to store a description for a shirt that comes in three sizes and three colors?",
+		answerOptions: [
+			{
+				answer: "Variation"
+			},
+			{
+				answer: "Bundle"
+			},
+			{
+				answer: "Product",
+				"isCorrect": true
+			},
+			{
+				answer: "Package"
+			}
+		]
+	},
+	{
+		question: "Which list of content types inherit the EntryContentBase class?",
+		answerOptions: [
+			{
+				answer: "CatalogContent, ProductContent, PackageContent, BundleContent"
+			},
+			{
+				answer: "VariationContent, PackageContent, BundleContent"
+			},
+			{
+				answer: "ProductContent, VariationContent, PackageContent, BundleContent",
+				"isCorrect": true
+			},
+			{
+				answer: "NodeContent, ProductContent, VariationContent"
+			}
+		]
+	},
+	{
+		question: "Consider the following assumptions:\n\nPromotion P1 is \"Buy 3 of product A and get a 10% discount on 1 product A.\" Promotion P2 is \"Get 5% off product A.\" P1 has a higher priority than P2. P1 or P2 excludes the other. If an order group has the following line item: SKU = A, quantity = 10, what is the result?",
+		answerOptions: [
+			{
+				answer: "1 unit gets a 10% discount. 9 units get a 5% discount."
+			},
+			{
+				answer: "3 units get a 10% discount. 6 units are charged full price. 1 unit receives a 5% discount."
+			},
+			{
+				answer: "1 unit gets a 10% discount. 2 units are charged full price. 7 units receive a 5% discount."
+			},
+			{
+				answer: "1 unit gets a 10% discount. 9 units are charged full price.",
+				"isCorrect": true
+			}
+		]
+	},
+	{
+		question: "Which Commerce class retrieves all child variants of the current product in the Product Controller for a catalog modeled so that products have multiple variants?",
+		answerOptions: [
+			{
+				answer: "IAssociationRepository"
+			},
+			{
+				answer: "IContentLoader"
+			},
+			{
+				answer: "IRelationRepository",
+				"isCorrect": true
+			},
+			{
+				answer: "ReferenceConverter"
+			}
 		]
 	},
 ]
